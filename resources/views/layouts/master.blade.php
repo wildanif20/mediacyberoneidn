@@ -16,7 +16,7 @@
     <script src="{!! asset('js/bootstrap.bundle.min.js') !!}"></script>
 
     <!-- Link Style Custom -->
-    <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <!-- Link Icon Tab -->
     <link rel="icon" href="{!! asset('img/logo tv.png') !!}">
