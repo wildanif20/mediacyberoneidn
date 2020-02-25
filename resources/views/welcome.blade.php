@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg nav-head pt-0 pb-0">
   <nav class="navbar navbar-light">
       <a class="navbar-brand" href="#">
-          <img src="{{asset('img/lpaten.png')}}" width="60" height="auto" class="d-inline-block align-top" alt="berita">
+          <img src="{!! asset('img/lpaten.png') !!}" width="60" height="auto" class="d-inline-block align-top" alt="berita">
       </a>
   </nav>
 
