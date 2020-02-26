@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
 use Illuminate\Support\Facades\DB;
 
-class CategoryController extends Controller
+class HeadlingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::all();
-        return view('admin/kategori/index')->with('data', $data);
+        //
     }
 
     /**
@@ -37,11 +35,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('categories')->insert([
-            'kategori' => $request->kategori,
-        ]);
-
-        return redirect('/kategori');
+        //
     }
 
     /**
@@ -53,11 +47,10 @@ class CategoryController extends Controller
     public function show($id)
     {
         $view = DB::table('articles')
-        ->where('id_category',$id)
+        ->where('headlings',$id)
         ->get();
+
         return view('admin/berita/kategori',compact('view'));
-
-
     }
 
     /**
@@ -91,14 +84,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        
-        DB::table('categories')->where('id_category', $id)->delete();
-        return redirect('/kategori')->with('success', 'Hapus kategori Berhasil !');
-
-    }
-
-    public function showCategory()
-    {
-
+        //
     }
 }

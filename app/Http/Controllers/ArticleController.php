@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Article;
+use Illuminate\Http\Request;
+use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -14,8 +16,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        // $data = Article::all();
-        // return view('welcome')->with('data', $data);
+        // $users = Category::with(['articles', 'articles.category'])->get();
+        // return response()->json(['data' => $users]);
+        $data = Category::all();
+        return view('admin/berita/index')->with('data', $data);
     }
 
     /**
@@ -36,7 +40,18 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id_kat = $request->kategori;
+        DB::table('articles')->insert([
+            'id_category' => $request->kategori,
+            'judul' => $request->judul,
+            'paragraf' => $request->content,
+            'headlings' => $request->trending,
+        ]);
+
+        return redirect('/berita');
+
+        // dd($request->all());
+
     }
 
     /**
@@ -47,7 +62,12 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = DB::table('articles')
+            ->where('id_article',$id)
+            ->get();
+            
+        return view('admin/berita/show')->with('data', $data);
+        // dd($data);
     }
 
     /**
@@ -82,5 +102,10 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showRedaksi()
+    {
+        return view('redaksi/index');
     }
 }

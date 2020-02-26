@@ -144,51 +144,34 @@
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-12">
-                        <h2>Daftar Kategori</h2>
-                        <table class="table">
-                            <thead>
-                                <tr>                                    
-                                    <th>no</th>
-                                    <th>nama Berita</th>
-                                    <th colspan="2" style="text-align: center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $no = 1
-                                @endphp
-                                @foreach ($data as $item)
-                                    <tr>
-                                        <td>{{$no}}</td>
-                                        <td>{{$item->kategori}}</td>
-                                        {{-- <td>
-                                            <button type="submit" class="btn btn-primary">
-                                                <a href="{{route('kategori.edit',$item->id_category)}}">
-                                                    <i class="fas fa-edit" style="color: white"></i>
-                                                </a>
-                                            </button>
-                                        </td> --}}
-                                        <td>
-                                            <form action="{{route('kategori.destroy',$item->id_category)}}" method="post">
-                                                @csrf @method('DELETE')
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin akan di hapus ?')">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>         
-                                    {{$no++}}                           
-                                @endforeach
-                            </tbody>
-                        </table>
                         <br>
-                        <form action="{{route('kategori.store')}}" method="post">
+                        <form action="{{route('berita.store')}}" method="post">
                             {{ csrf_field() }}
+                            <h2>Daftar Kategori</h2>
                             <div class="form-group">
-                              <label for="Kategori">Kategori</label>
-                              <input type="text"
-                                class="form-control" name="kategori" id="Kategori" aria-describedby="helpId" placeholder="nama kategori,,,">
+                                <label for="kategori">Pilih Kategori</label>
+                                <select class="custom-select" name="kategori" id="kategori">
+                                    <option selected>-- Pilih --</option>
+                                    @foreach ($data as $item)
+                                        <option value="{{$item->id_category}}">{{$item->kategori}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="trending" id="trending" value="1">Trending ?
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="judul">Judul</label>
+                                <input type="text"
+                                class="form-control" name="judul" id="judul" aria-describedby="helpId" placeholder="">
                               <small id="helpId" class="form-text text-muted"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Content</label>
+                                <br>
+                                    <textarea name="content" id="content" cols="30" rows="10"></textarea>                              
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>

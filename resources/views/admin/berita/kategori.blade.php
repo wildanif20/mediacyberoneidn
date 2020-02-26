@@ -1,29 +1,14 @@
 @extends('layouts.master')
 @section('content')
-<div class="container col-lg-11 text-nav-buttom">
-  <a href="#">MediaCyberOne | </a>
-  {{-- <a>Berita</a> --}}
-  <header>
-      <div class="overlay"></div>
-      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
-      </video>
-      <div class="container h-100">
-        <div class="d-flex h-100 text-center align-items-center">
-          <div class="w-100 text-white">
-            <p class="lead "></p>
-          </div>
-        </div>
-      </div>
-    </header>
-</div>
+
+
 
 <hr class="style-one">
 <section class="my-5">
   <div class="container">
-      <h2>News</h2>
+      {{-- <h2>News</h2> --}}
     <div class="row">
-      @foreach ($data as $d)                
+      @foreach ($view as $d)                
       <div class="col-sm">
           <div class="card c-border-card" style="width: 18rem;">
               <img src="{{asset('img/lpaten.png')}}" class="card-img-top c-img mx-auto mt-2" alt="berita">
@@ -48,7 +33,7 @@
   </div>
 </section>
 <div class="paginate">
-    {{$data->links()}}
+    {{-- {{$data->links()}} --}}
 </div>
 
 <!-- Footer -->

@@ -22,6 +22,7 @@ class CreateArticlesTable extends Migration
             $table->string('gambar')->nullable();
             $table->date('jadwal_upload')->nullable();
             $table->integer('view')->nullable();
+            $table->tinyInteger('headlings')->nullable();
             $table->timestamps();
         });
     }
